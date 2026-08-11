@@ -1,0 +1,18 @@
+{
+  "compatibility_flags": ["nodejs_compat"],
+
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_id": "a3a654e2-279d-4f1d-9fb4-0ae0fe229d42",
+      "migrations_table": "_hub_migrations",
+      "migrations_dir": "./server/db/migrations/sqlite",
+    },
+  ],
+  "kv_namespaces": [
+    {
+      "binding": "KV",
+      "id": "9024b2b76aa14f4abab58a469484d985",
+    },
+  ],
+}

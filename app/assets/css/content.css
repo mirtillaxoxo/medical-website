@@ -1,0 +1,51 @@
+@reference './main.css';
+
+.portable-text {
+  @apply font-body;
+}
+.portable-text p {
+  @apply mb-4;
+}
+.portable-text h1,
+.portable-text h2,
+.portable-text h3,
+.portable-text h4,
+.portable-text h5,
+.portable-text h6 {
+  @apply text-lg text-primary py-4 font-bold uppercase;
+}
+.portable-text p:last-of-type {
+  @apply mb-0;
+}
+
+.portable-text a {
+  @apply text-secondary underline;
+}
+
+.portable-text ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 0.5rem; /* mb-2 */
+}
+
+.portable-text li {
+  position: relative;
+  margin-bottom: 0.5rem; /* mb-2 */
+}
+
+.portable-text li::marker {
+  color: var(--color-secondary);
+}
+
+.portable-text strong {
+  @apply font-body font-bold text-dark;
+}
+
+.when-list ul {
+  @apply list-none p-0;
+}
+
+.when-text ul,
+.when-text li {
+  @apply mb-0!;
+}

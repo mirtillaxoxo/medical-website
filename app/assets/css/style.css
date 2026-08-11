@@ -1,0 +1,69 @@
+@reference './main.css';
+
+:root {
+  --spacer: 1.5rem; /* p-6 */
+}
+/* MD */
+@media (width >= 48rem /* 768px */) {
+  :root {
+    --spacer: 2.25rem; /* p-9 */
+  }
+}
+/* LG */
+@media (width >= 64rem /* 1024px */) {
+  :root {
+    --spacer: 3rem; /* p-12 */
+  }
+}
+
+.section-padding {
+  padding: var(--spacer);
+}
+.section-padding-x {
+  padding-left: var(--spacer);
+  padding-right: var(--spacer);
+}
+.section-padding-y {
+  padding-top: var(--spacer);
+  padding-bottom: var(--spacer);
+}
+.section-padding-l {
+  padding-left: var(--spacer);
+}
+.section-padding-r {
+  padding-right: var(--spacer);
+}
+.section-padding-t {
+  padding-top: var(--spacer);
+}
+.section-padding-b {
+  padding-bottom: var(--spacer);
+}
+
+.section-padding-y-half {
+  padding-top: calc(var(--spacer) / 2);
+  padding-bottom: calc(var(--spacer) / 2);
+}
+
+.section-padding-x-half {
+  padding-left: calc(var(--spacer) / 2);
+  padding-right: calc(var(--spacer) / 2);
+}
+.section-padding-l-half {
+  padding-left: calc(var(--spacer) / 2);
+}
+.section-padding-r-half {
+  padding-right: calc(var(--spacer) / 2);
+}
+
+.section-padding-b-half {
+  padding-bottom: calc(var(--spacer) / 2);
+}
+
+.left-padding {
+  left: var(--spacer);
+}
+
+.section-title {
+  @apply text-xl md:text-2xl text-dark font-bold uppercase;
+}
