@@ -1,3 +1,8 @@
+<script setup lang="ts">
+const { load } = useBrandInfo();
+await callOnce(() => load());
+</script>
+
 <template>
   <article class="flex flex-col">
     <!-- HERO / ABOUT -->

@@ -1,21 +1,21 @@
 <script lang="ts" setup>
-import { brandInfo } from '~~/config/brand-info'
+const { brandInfo } = useBrandInfo();
 
 type NavigationPage = {
-  title: string
-  slug: string
-}
+  title: string;
+  slug: string;
+};
 
 const props = defineProps<{
-  open: boolean
-  pages: NavigationPage[]
-}>()
+  open: boolean;
+  pages: NavigationPage[];
+}>();
 
 const emit = defineEmits<{
-  close: []
-}>()
+  close: [];
+}>();
 
-const closeModal = () => emit('close')
+const closeModal = () => emit("close");
 </script>
 
 <template>
@@ -40,10 +40,9 @@ const closeModal = () => emit('close')
         >
           <!-- LOGO -->
           <NuxtLink to="/" class="flex items-center gap-3 no-underline">
-            <NuxtImg
-              src="/graphics/doctor_logo.svg"
-              :alt="`${brandInfo.name} ${brandInfo.surname} logo`"
-              class="w-10 h-auto"
+            <GraphicsMedicalLogo
+              :label="`${brandInfo.name} ${brandInfo.surname} logo`"
+              class="text-primary"
             />
 
             <div class="flex flex-col">

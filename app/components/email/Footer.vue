@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { brandInfo } from "~~/config/brand-info";
+const { brandInfo } = useBrandInfo();
 import { Section, Img, Text, Link } from "@vue-email/components";
 
 function createContactUrl(type: string, value: string) {

@@ -8,41 +8,41 @@ import {
   Img,
   Section,
   Text,
-} from '@vue-email/components'
-import { brandInfo } from '~~/config/brand-info'
+} from "@vue-email/components";
+const { brandInfo } = useBrandInfo();
 
-import { default as EmailLayout } from '~/components/email/Layout.vue'
-import EmailFooter from '~/components/email/Footer.vue'
+import { default as EmailLayout } from "~/components/email/Layout.vue";
+import EmailFooter from "~/components/email/Footer.vue";
 
 //PROPS
 interface Props {
-  name: string
-  surname: string
-  email: string
-  telephone: string
-  address?: string
+  name: string;
+  surname: string;
+  email: string;
+  telephone: string;
+  address?: string;
 
-  exam_name?: string
-  datetime?: string
-  struttura?: string
-  priceDisplay?: string
+  exam_name?: string;
+  datetime?: string;
+  struttura?: string;
+  priceDisplay?: string;
 }
-defineProps<Props>()
+defineProps<Props>();
 
 const formatDatetime = (iso?: string) => {
-  if (!iso) return ''
+  if (!iso) return "";
 
-  const normalized = /Z|[+-]\d{2}:\d{2}$/.test(iso) ? iso : iso + 'Z'
+  const normalized = /Z|[+-]\d{2}:\d{2}$/.test(iso) ? iso : iso + "Z";
 
-  return new Date(normalized).toLocaleString('it-IT', {
-    day: '2-digit',
-    month: 'long',
-    year: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-    timeZone: 'Europe/Rome',
-  })
-}
+  return new Date(normalized).toLocaleString("it-IT", {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    timeZone: "Europe/Rome",
+  });
+};
 </script>
 
 <template>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { brandInfo } from "~~/config/brand-info";
+const { brandInfo } = useBrandInfo();
 
 const { data } = useAbout();
 </script>

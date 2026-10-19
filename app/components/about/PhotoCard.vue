@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { brandInfo } from '~~/config/brand-info'
-const route = useRoute()
-const { data } = useAbout()
+const { brandInfo } = useBrandInfo();
+const route = useRoute();
+const { data } = useAbout();
 </script>
 
 <template>
@@ -18,7 +18,11 @@ const { data } = useAbout()
 
 .profile-image-container {
   @apply flex md:inline-flex rounded-full items-center justify-center p-1.5;
-  background-image: url('~/assets/graphics/circle-color.svg');
+  background-image: linear-gradient(
+    to right,
+    var(--color-primary),
+    var(--color-secondary)
+  );
 }
 .profile-image-container > img {
   @apply rounded-full;

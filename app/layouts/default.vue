@@ -1,10 +1,16 @@
 <script lang="ts" setup>
-import { PiniaColadaDevtools } from '@pinia/colada-devtools'
-const { loadColors } = useThemeColors()
+// Carica una sola volta brand, colori e raggiature (anche in SSR)
+const { load: loadBrand } = useBrandInfo();
+const { load: loadTheme } = useThemeColors();
+const { load: loadRadius } = useRadiusSettings();
 
-onMounted(() => {
-  loadColors()
-})
+await callOnce("site-data", async () => {
+  await Promise.all([loadBrand(), loadTheme(), loadRadius()]);
+});
+
+// Inserisce colori e raggiature salvati come variabili CSS nell'head
+useThemeStyle();
+useRadiusStyle();
 </script>
 
 <template>
@@ -15,14 +21,4 @@ onMounted(() => {
     </main>
     <LayoutTheFooter />
   </div>
-
-  <!-- DEV -->
-
-  <ClientOnly>
-    <DevOnly>
-      <DevUtilitiesBox class="mt-12" />
-    </DevOnly>
-
-    <PiniaColadaDevtools />
-  </ClientOnly>
 </template>

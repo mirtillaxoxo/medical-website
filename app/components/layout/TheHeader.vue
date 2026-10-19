@@ -1,32 +1,32 @@
 <script lang="ts" setup>
-import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
-import { websitePages } from '~~/config/website-pages'
-import { brandInfo } from '~~/config/brand-info'
+import { breakpointsTailwind, useBreakpoints } from "@vueuse/core";
+import { websitePages } from "~~/config/website-pages";
+const { brandInfo } = useBrandInfo();
 
 const breakpoints = useBreakpoints(breakpointsTailwind, {
   ssrWidth: breakpointsTailwind.md,
-})
+});
 
-const attrs = useAttrs()
-const [first, ...rest] = websitePages
-const pages = [...rest, first] as typeof websitePages
+const attrs = useAttrs();
+const [first, ...rest] = websitePages;
+const pages = [...rest, first] as typeof websitePages;
 
-const mobileMenu = ref(false)
-const route = useRoute()
+const mobileMenu = ref(false);
+const route = useRoute();
 
-const isDesktop = computed(() => breakpoints.isGreater('md'))
+const isDesktop = computed(() => breakpoints.isGreater("md"));
 
-const closeMobileMenu = () => (mobileMenu.value = false)
-const toggleMobileMenu = () => (mobileMenu.value = !mobileMenu.value)
+const closeMobileMenu = () => (mobileMenu.value = false);
+const toggleMobileMenu = () => (mobileMenu.value = !mobileMenu.value);
 
 watch(isDesktop, (desktop) => {
-  if (desktop) closeMobileMenu()
-})
+  if (desktop) closeMobileMenu();
+});
 
 watch(
   () => route.fullPath,
   () => closeMobileMenu(),
-)
+);
 </script>
 
 <template>
@@ -37,10 +37,9 @@ watch(
     <div class="flex items-center justify-between">
       <!-- LOGO -->
       <NuxtLink to="/" class="flex items-center gap-3 no-underline">
-        <NuxtImg
-          src="/graphics/doctor_logo.svg"
-          :alt="`${brandInfo.name} ${brandInfo.surname} logo`"
-          class="w-10 h-auto"
+        <GraphicsMedicalLogo
+          :label="`${brandInfo.name} ${brandInfo.surname} logo`"
+          class="text-primary"
         />
 
         <div class="flex flex-col">
@@ -91,7 +90,7 @@ watch(
           class="flex items-center justify-center p-2.5 rounded-md border border-primary/20 bg-white text-dark shadow-md hover:bg-primary/10 hover:shadow-lg transition"
         >
           <Icon
-            :name="mobileMenu ? 'i-ph:x-bold' : 'i-cg-menu-color'"
+            :name="mobileMenu ? 'i-ph:x-bold' : 'i-ph:list-bold'"
             class="size-6"
           />
         </button>

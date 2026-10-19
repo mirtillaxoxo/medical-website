@@ -1,20 +1,19 @@
 <script lang="ts" setup>
-import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
+import { breakpointsTailwind, useBreakpoints } from "@vueuse/core";
 
-import { websitePages } from '~~/config/website-pages'
-import { brandInfo } from '~~/config/brand-info'
+import { websitePages } from "~~/config/website-pages";
+const { brandInfo } = useBrandInfo();
 
 const breakpoints = useBreakpoints(breakpointsTailwind, {
   ssrWidth: breakpointsTailwind.md,
-})
+});
 </script>
 
 <template>
   <footer class="relative mt-9 grid grid-cols-6 text-white">
-    <NuxtImg
-      src="/graphics/doctor_logo_half-white.svg"
-      class="absolute h-6 md:h-9 -top-3 md:-top-4.5 left-padding"
-      :alt="`${brandInfo.name} ${brandInfo.surname} logo`"
+    <GraphicsMedicalLogo
+      :label="`${brandInfo.name} ${brandInfo.surname} logo`"
+      class="text-dark absolute h-6 md:h-9 -top-6.5 md:-top-7 left-padding"
     />
 
     <!-- left -->
@@ -35,26 +34,30 @@ const breakpoints = useBreakpoints(breakpointsTailwind, {
       <BrandContactsList v-if="breakpoints.isGreater('md')" class="my-6" />
 
       <div class="flex flex-col gap-3">
-        <p>Medico Chirurgo</p>
+        <p>{{ brandInfo.role }}</p>
 
-        <div class="text-xs md:text-sm">
+        <div v-if="brandInfo.registration?.number" class="text-xs md:text-sm">
           <p>
             <NuxtLink
               external
-              to="https://omceo.latraccia.it/omceomi/f?p=111:103:::NO::P103_ID_ANAGRAFICA:742AAC62A0865928F7E920CF7CB79B12&cs=1E7983EB38A8D6835BEA54C3A210DAB20"
+              :to="brandInfo.registration.url || '#'"
               target="_blank"
             >
-              Iscritto all'Albo Provinciale dei Medici Chirurghi di MILANO
+              Iscritto all'Albo Provinciale dei Medici Chirurghi di
+              {{ brandInfo.registration.province }}
             </NuxtLink>
           </p>
           <p>
-            dal 13 Aprile 2021 ~
+            dal {{ brandInfo.registration.date }} ~
             <NuxtLink
               external
-              to="https://omceo.latraccia.it/omceomi/f?p=111:103:::NO::P103_ID_ANAGRAFICA:742AAC62A0865928F7E920CF7CB79B12&cs=1E7983EB38A8D6835BEA54C3A210DAB20"
+              :to="brandInfo.registration.url || '#'"
               target="_blank"
             >
-              Numero <span class="font-black">47968</span>
+              Numero
+              <span class="font-black">{{
+                brandInfo.registration.number
+              }}</span>
             </NuxtLink>
           </p>
         </div>

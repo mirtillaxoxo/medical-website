@@ -1,19 +1,11 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @theme {
-  --color-primary: var(--color-primary);
-  --color-secondary: var(--color-secondary);
-  --color-dark: var(--color-dark);
-
-  --font-display: 'Cormorant Garamond', serif;
-  --font-body: 'DM Sans', sans-serif;
-  --font-google: 'Arial', sans-serif;
-}
-
-:root {
   --color-primary: #029e9d;
-
   --color-secondary: #83c1c5;
-
   --color-dark: #014561;
+
+  --font-display: "Cormorant Garamond", serif;
+  --font-body: "DM Sans", sans-serif;
+  --font-google: "Arial", sans-serif;
 }

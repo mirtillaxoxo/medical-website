@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { brandInfo } from '~~/config/brand-info'
-const { data } = useAbout()
+const { brandInfo } = useBrandInfo();
+const { data } = useAbout();
 </script>
 <template>
   <section class="grid grid-cols-1 lg:grid-cols-3 bg-white items-stretch">
